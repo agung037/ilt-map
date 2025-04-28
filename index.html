@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brew Haven - Artisan Coffee House</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="./main.js" defer></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">Brew <span>Haven</span></div>
+            <nav>
+                <button class="mobile-menu-btn">☰</button>
+                <ul id="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Artisan Coffee & Cozy Atmosphere</h1>
+            <p>Discover the perfect blend of quality coffee and warm hospitality at Brew Haven. Handcrafted beverages made with locally sourced ingredients.</p>
+            <a href="#menu" class="btn">View Our Menu</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <h2 class="section-title">Our Story</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Since 2010</h3>
+                <p>Founded by two coffee enthusiasts, Brew Haven started as a small cart in the downtown area. Our passion for quality coffee and community quickly grew into this cozy space where people gather, work, and connect.</p>
+                <p>We roast our own beans in small batches to ensure freshness and work directly with farmers who practice sustainable agriculture. Every cup tells a story of craftsmanship and care.</p>
+                <a href="#contact" class="btn">Visit Us</a>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Cafe interior">
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="section menu" id="menu">
+        <h2 class="section-title">Our Menu</h2>
+        <div class="menu-items">
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Espresso">
+                <div class="menu-item-content">
+                    <h3 class="menu-item-title">Espresso</h3>
+                    <p class="menu-item-price">$3.50</p>
+                    <p>Our signature espresso blend with rich crema and balanced flavor profile.</p>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Cappuccino">
+                <div class="menu-item-content">
+                    <h3 class="menu-item-title">Cappuccino</h3>
+                    <p class="menu-item-price">$4.50</p>
+                    <p>Perfectly steamed milk with a double shot of espresso and velvety foam.</p>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Cold Brew">
+                <div class="menu-item-content">
+                    <h3 class="menu-item-title">Cold Brew</h3>
+                    <p class="menu-item-price">$4.75</p>
+                    <p>Smooth, slow-steeped cold brew coffee served over ice.</p>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Avocado Toast">
+                <div class="menu-item-content">
+                    <h3 class="menu-item-title">Avocado Toast</h3>
+                    <p class="menu-item-price">$8.50</p>
+                    <p>Sourdough bread with smashed avocado, cherry tomatoes, and microgreens.</p>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Breakfast Sandwich">
+                <div class="menu-item-content">
+                    <h3 class="menu-item-title">Breakfast Sandwich</h3>
+                    <p class="menu-item-price">$9.00</p>
+                    <p>Egg, cheddar, and your choice of bacon or sausage on a brioche bun.</p>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Blueberry Muffin">
+                <div class="menu-item-content">
+                    <h3 class="menu-item-title">Blueberry Muffin</h3>
+                    <p class="menu-item-price">$3.75</p>
+                    <p>Freshly baked muffin packed with juicy blueberries.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials" id="testimonials">
+        <h2 class="section-title">What Our Customers Say</h2>
+        <div class="testimonial-container">
+            <div class="testimonial active">
+                <p class="testimonial-text">"The best coffee in town! I come here every morning before work. The atmosphere is so welcoming and the baristas remember my usual order."</p>
+                <p class="testimonial-author">- Sarah J.</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-text">"I love working from Brew Haven. Great wifi, plenty of outlets, and the most comfortable chairs. Plus their cold brew is unbeatable on hot days."</p>
+                <p class="testimonial-author">- Michael T.</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-text">"Their avocado toast is my weekend treat. Fresh ingredients and perfect seasoning every time. Worth the wait when it's busy!"</p>
+                <p class="testimonial-author">- Emily R.</p>
+            </div>
+            <div class="testimonial-nav">
+                <div class="testimonial-dot active" data-index="0"></div>
+                <div class="testimonial-dot" data-index="1"></div>
+                <div class="testimonial-dot" data-index="2"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <h2 class="section-title">Visit Us</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Location & Hours</h3>
+                <div class="contact-details">
+                    <div class="contact-detail">
+                        <i>📍</i>
+                        <span>123 Coffee Lane, Brew City, BC 12345</span>
+                    </div>
+                    <div class="contact-detail">
+                        <i>🕒</i>
+                        <span>Monday - Friday: 7am - 7pm<br>Saturday - Sunday: 8am - 6pm</span>
+                    </div>
+                    <div class="contact-detail">
+                        <i>📞</i>
+                        <span>(123) 456-7890</span>
+                    </div>
+                </div>
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link">📱</a>
+                    <a href="#" class="social-link">📘</a>
+                    <a href="#" class="social-link">📷</a>
+                    <a href="#" class="social-link">🐦</a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3>Send Us a Message</h3>
+                <form id="message-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" required></textarea>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+        <div class="map-and-list">
+            <div class="cafe-list">
+                <h3>Our Cafés</h3>
+                <ul>
+                    <li><b>Cafe One</b><br>Jl. Medan Merdeka, Jakarta</li>
+                    <li><b>Cafe Two</b><br>Jl. Medan Merdeka Selatan, Jakarta</li>
+                    <li><b>Cafe Three</b><br>Jl. Medan Merdeka Utara, Jakarta</li>
+                    <li><b>Cafe Four</b><br>Jl. Medan Merdeka Timur, Jakarta</li>
+                    <li><b>Cafe Five</b><br>Jl. Medan Merdeka Barat, Jakarta</li>
+                </ul>
+            </div>
+            <div id="map" style="height: 400px;"></div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo">Brew <span>Haven</span></div>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#menu">Menu</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <p class="copyright">© 2023 Brew Haven. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+</body>
+</html>

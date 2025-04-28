@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <style>
+        /* make id peta take full height and width */
+        #peta {
+            height: 100vh;
+            width: 100%;
+        }
+        /* make the map responsive */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="peta">
+
+    </div>
+
+    <script>
+
+        const myTile = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap'
+        });
+
+        const lokasiJakarta = [-6.2, 106.816666];
+        
+        const peta = L.map('peta', {
+            zoom: 5,
+            center: lokasiJakarta,
+            scrollWheelZoom: true
+        })
+        myTile.addTo(peta);
+
+        // tambahkan jakarta marker
+        const jakartaMarker = L.marker(lokasiJakarta);
+        jakartaMarker.addTo(peta)
+
+        // geoJson
+        const stores = {
+            "type": "FeatureCollection",
+            "features": [
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [106.816666, -6.2]
+                    },
+                    "properties": {
+                        "name": "Jakarta"
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [110.4972, -7.3314]
+                    },
+                    "properties": {
+                        "name": "Salatiga"
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [110.3783, -7.7956]
+                    },
+                    "properties": {
+                        "name": "Semarang"
+                    }
+                }
+            ]
+        };
+
+        const geoJsonLayer = L.geoJSON(stores).addTo(peta);
+
+
+
+
+        
+
+    </script>
+</body>
+</html>
