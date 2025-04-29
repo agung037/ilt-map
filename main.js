@@ -58,14 +58,18 @@ form.addEventListener('submit', function(e) {
 
 // map
 document.addEventListener("DOMContentLoaded", () => {
-    // Initialize the map centered near Monas, Jakarta
-    const map = L.map('map').setView([-6.175392, 106.827153], 15); // Monas coordinates
+   
+   // Initialize the map centered near Monas, Jakarta
+   const map = L.map('map').setView([-6.175392, 106.827153], 15); // Monas coordinates
 
+    
     // Add OpenStreetMap tiles
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '© OpenStreetMap contributors'
     }).addTo(map);
+
+  
 
     // Café locations near Monas
     const cafesGeoJson = {
@@ -118,18 +122,20 @@ document.addEventListener("DOMContentLoaded", () => {
             {
                 type: "Feature",
                 properties: {
-                    name: "Cafe Five",
-                    address: "Jl. Medan Merdeka Barat, Jakarta"
+                    name: "Cafe Bekasi",
+                    address: "Planet Bekasi, Jl. Raya Bekasi"
                 },
                 geometry: {
                     type: "Point",
-                    coordinates: [106.825678, -6.173789]
+                    coordinates: [106.992416, -6.241586]
                 }
             }
         ]
     };
     
+    // -6.241586, 106.992416
 
-    // Add café markers to the map
+
+   // Add café markers to the map
     L.geoJSON(cafesGeoJson).addTo(map)
 });
