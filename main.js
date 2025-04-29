@@ -68,18 +68,68 @@ document.addEventListener("DOMContentLoaded", () => {
     }).addTo(map);
 
     // Café locations near Monas
-    const cafes = [
-        { name: "Cafe One", coords: [-6.175110, 106.827080], address: "Jl. Medan Merdeka, Jakarta" },
-        { name: "Cafe Two", coords: [-6.176655, 106.828611], address: "Jl. Medan Merdeka Selatan, Jakarta" },
-        { name: "Cafe Three", coords: [-6.174456, 106.826789], address: "Jl. Medan Merdeka Utara, Jakarta" },
-        { name: "Cafe Four", coords: [-6.177123, 106.829456], address: "Jl. Medan Merdeka Timur, Jakarta" },
-        { name: "Cafe Five", coords: [-6.173789, 106.825678], address: "Jl. Medan Merdeka Barat, Jakarta" }
-    ];
+    const cafesGeoJson = {
+        type: "FeatureCollection",
+        features: [
+            {
+                type: "Feature",
+                properties: {
+                    name: "Cafe One",
+                    address: "Jl. Medan Merdeka, Jakarta"
+                },
+                geometry: {
+                    type: "Point",
+                    coordinates: [106.827080, -6.175110] // GeoJSON uses [lng, lat]
+                }
+            },
+            {
+                type: "Feature",
+                properties: {
+                    name: "Cafe Two",
+                    address: "Jl. Medan Merdeka Selatan, Jakarta"
+                },
+                geometry: {
+                    type: "Point",
+                    coordinates: [106.828611, -6.176655]
+                }
+            },
+            {
+                type: "Feature",
+                properties: {
+                    name: "Cafe Three",
+                    address: "Jl. Medan Merdeka Utara, Jakarta"
+                },
+                geometry: {
+                    type: "Point",
+                    coordinates: [106.826789, -6.174456]
+                }
+            },
+            {
+                type: "Feature",
+                properties: {
+                    name: "Cafe Four",
+                    address: "Jl. Medan Merdeka Timur, Jakarta"
+                },
+                geometry: {
+                    type: "Point",
+                    coordinates: [106.829456, -6.177123]
+                }
+            },
+            {
+                type: "Feature",
+                properties: {
+                    name: "Cafe Five",
+                    address: "Jl. Medan Merdeka Barat, Jakarta"
+                },
+                geometry: {
+                    type: "Point",
+                    coordinates: [106.825678, -6.173789]
+                }
+            }
+        ]
+    };
+    
 
-    // Add markers for each café
-    cafes.forEach(cafe => {
-        L.marker(cafe.coords)
-            .addTo(map)
-            .bindPopup(`<b>${cafe.name}</b><br>${cafe.address}`);
-    });
+    // Add café markers to the map
+    L.geoJSON(cafesGeoJson).addTo(map)
 });

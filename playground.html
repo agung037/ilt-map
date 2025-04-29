@@ -47,63 +47,65 @@
         const jakartaMarker = L.marker(lokasiJakarta);
         jakartaMarker.addTo(peta)
 
-        // geoJson
-        const stores = {
+        // geoJson for tokyo, canberra, and singapore
+        const bigCity = {
             "type": "FeatureCollection",
             "features": [
                 {
                     "type": "Feature",
+                    "properties": {
+                        "name": "Tokyo",
+                        "country": "Japan"
+                    },
                     "geometry": {
                         "type": "Point",
-                        "coordinates": [106.816666, -6.2]
-                    },
-                    "properties": {
-                        "name": "Jakarta"
+                        "coordinates": [139.6917, 35.6895]
                     }
                 },
                 {
                     "type": "Feature",
+                    "properties": {
+                        "name": "Canberra",
+                        "country": "Australia"
+                    },
                     "geometry": {
                         "type": "Point",
-                        "coordinates": [110.4972, -7.3314]
-                    },
-                    "properties": {
-                        "name": "Salatiga"
+                        "coordinates": [149.1244, -35.2820]
                     }
                 },
                 {
                     "type": "Feature",
+                    "properties": {
+                        "name": "Singapore",
+                        "country": "Singapore"
+                    },
                     "geometry": {
                         "type": "Point",
-                        "coordinates": [110.3783, -7.7956]
-                    },
-                    "properties": {
-                        "name": "Semarang"
+                        "coordinates": [103.8198, 1.3521]
                     }
                 }
             ]
         };
 
-        const geoJsonLayer = L.geoJSON(stores).addTo(peta);
-
-
-        // function to get my location
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition);
-            } else {
-                alert("Geolocation is not supported by this browser.");
+        // add bigCity to map
+        L.geoJSON(bigCity, {
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup(feature.properties.name + ", " + feature.properties.country);
             }
-        }        
-        // function to show position
-        function showPosition(position) {
-            const lat = position.coords.latitude;
-            const lon = position.coords.longitude;
-            const userMarker = L.marker([lat, lon]).addTo(peta);
-            peta.setView([lat, lon], 13);
-        }        
-        // Call getLocation to retrieve user's location
-        getLocation();
+        }).addTo(peta);
+
+
+        // my current location
+        navigator.geolocation.getCurrentPosition(pos => {
+            console.log(pos.coords.latitude, pos.coords.longitude);
+
+            // add to peta
+            const myLocation = L.marker([pos.coords.latitude, pos.coords.longitude]);
+            myLocation.addTo(peta);            
+            myLocation.bindPopup("You are here").openPopup();
+        });
+
+
 
         
         
