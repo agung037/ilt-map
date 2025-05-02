@@ -122,18 +122,37 @@ document.addEventListener("DOMContentLoaded", () => {
             {
                 type: "Feature",
                 properties: {
-                    name: "Cafe Bekasi",
-                    address: "Planet Bekasi, Jl. Raya Bekasi"
+                    name: "Cafe Agung",
+                    address: "alamat rahasia"
                 },
                 geometry: {
                     type: "Point",
-                    coordinates: [106.992416, -6.241586]
+                    coordinates: [104.129097, 1.104848]
                 }
             }
         ]
     };
+
+    // make me function that randomize the coordinates but still around jakarta
+
+
+    function randomizeCoordinates() {
+        const latRange = 0.01;
+        const lngRange = 0.01;
+        return [
+            106.827080 + (Math.random() * lngRange - lngRange / 2),
+            -6.175110 + (Math.random() * latRange - latRange / 2)
+        ];
+    }
+
+    // refresh the map
     
-    // -6.241586, 106.992416
+    const [lng, lat] = randomizeCoordinates();
+    L.marker([lat, lng]).addTo(map).bindPopup('Randomized Location');
+
+    navigator.geolocation.getCurrentPosition(pos => {
+        console.log(pos.coords.latitude, pos.coords.longitude);
+      });
 
 
    // Add café markers to the map
